@@ -8,10 +8,10 @@
   },
   "packageManager": "pnpm@10.14.0",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "pnpm --filter @mind-architect/game dev",
+    "build": "pnpm --filter @mind-architect/game build",
+    "lint": "pnpm -r lint",
+    "preview": "pnpm --filter @mind-architect/game preview"
   },
   "dependencies": {
     "react": "^19.2.0",
