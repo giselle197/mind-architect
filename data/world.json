@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "schema": "knowledge-graph-core"
+  },
+  "nodes": [
+    {
+      "id": "planet_001",
+      "name": "Knowledge Planet",
+      "parent_id": null,
+      "tags": ["vault", "entry"],
+      "metadata": {}
+    }
+  ]
+}
