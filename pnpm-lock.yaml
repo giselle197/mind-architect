@@ -57,6 +57,9 @@ importers:
 
   apps/game:
     dependencies:
+      '@mind-architect/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@mind-architect/data':
         specifier: workspace:*
         version: link:../../data

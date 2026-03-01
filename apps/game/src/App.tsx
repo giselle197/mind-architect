@@ -1,15 +1,16 @@
+import type { RendererPort } from "@mind-architect/core/src/application/ports/RendererPort";
 import worldData from "@mind-architect/data/world.json";
-import { FlatRenderer } from "@mind-architect/renderer-flat/src/FlatRenderer";
 import { useEffect, useRef } from "react";
+import { startApp } from "./bootstrap";
 
-function App() {
+
+function App({ renderer }: { renderer: RendererPort }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const renderer = new FlatRenderer();
-    renderer.render(worldData, containerRef.current);
+    startApp(containerRef.current, worldData, renderer);
 
     return () => {
       renderer.dispose?.();
