@@ -1,4 +1,4 @@
-import worldData from "@data/world.json";
+import worldData from "@mind-architect/data/world.json";
 
 function App() {
   return (

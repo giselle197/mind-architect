@@ -2,15 +2,11 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "nodenext",
     "jsx": "react-jsx",
     "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "@core/*": ["packages/core/*"],
-      "@adapters/*": ["packages/adapters/*"],
-      "@data/*": ["data/*"]
-    },
+    "declaration": true,
+    "composite": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true
