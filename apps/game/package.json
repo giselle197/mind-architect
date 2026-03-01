@@ -5,5 +5,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mind-architect/data": "workspace:*"
   }
 }

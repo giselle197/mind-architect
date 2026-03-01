@@ -55,7 +55,13 @@ importers:
         specifier: ^8.0.0-beta.13
         version: 8.0.0-beta.16(@types/node@24.11.0)
 
-  apps/game: {}
+  apps/game:
+    dependencies:
+      '@mind-architect/data':
+        specifier: workspace:*
+        version: link:../../data
+
+  data: {}
 
 packages:
 
