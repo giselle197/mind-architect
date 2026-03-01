@@ -1,0 +1,6 @@
+{
+  "name": "@mind-architect/renderer-flat",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module"
+}

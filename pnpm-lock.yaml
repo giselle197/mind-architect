@@ -60,8 +60,13 @@ importers:
       '@mind-architect/data':
         specifier: workspace:*
         version: link:../../data
+      '@mind-architect/renderer-flat':
+        specifier: workspace:*
+        version: link:../../packages/adapters/renderer-flat
 
   data: {}
+
+  packages/adapters/renderer-flat: {}
 
 packages:
 

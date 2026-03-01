@@ -7,6 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mind-architect/data": "workspace:*"
+    "@mind-architect/data": "workspace:*",
+    "@mind-architect/renderer-flat": "workspace:*"
   }
 }
