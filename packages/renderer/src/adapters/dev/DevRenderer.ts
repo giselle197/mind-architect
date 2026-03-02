@@ -1,6 +1,6 @@
 import type { RendererPort } from "../../core/RendererPort";
 
-export class FlatRenderer implements RendererPort {
+export class DevRenderer implements RendererPort {
   render(data: any, container: HTMLElement) {
     container.innerHTML = "";
 
