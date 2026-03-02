@@ -6,10 +6,10 @@ export class DevRenderer implements RendererPort {
 
     const root = document.createElement("div");
 
-    const title = document.createElement("h1");
-    title.textContent = data.nodes?.[0]?.name ?? "No Name";
+    const pre = document.createElement("pre");
+    pre.textContent = JSON.stringify(data, null, 2);
 
-    root.appendChild(title);
+    root.appendChild(pre);
     container.appendChild(root);
   }
 
