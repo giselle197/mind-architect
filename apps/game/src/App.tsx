@@ -1,4 +1,4 @@
-import type { RendererPort } from "@mind-architect/core/src/application/ports/RendererPort";
+import type { RendererPort } from "@mind-architect/renderer";
 import worldData from "@mind-architect/data/world.json";
 import { useEffect, useRef } from "react";
 import { startApp } from "./bootstrap";

@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@mind-architect/data": "workspace:*",
-    "@mind-architect/core": "workspace:*",
-    "@mind-architect/renderer-flat": "workspace:*"
+    "@mind-architect/renderer": "workspace:*"
   }
 }

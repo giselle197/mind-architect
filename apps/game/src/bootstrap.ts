@@ -1,4 +1,4 @@
-import type { RendererPort } from "@mind-architect/core/src/application/ports/RendererPort";
+import type { RendererPort } from "@mind-architect/renderer";
 
 export function startApp(
   container: HTMLElement,

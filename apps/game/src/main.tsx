@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import { FlatRenderer } from "@mind-architect/renderer-flat/src/FlatRenderer";
+import { FlatRenderer } from "@mind-architect/renderer";
 
 const renderer = new FlatRenderer();
 

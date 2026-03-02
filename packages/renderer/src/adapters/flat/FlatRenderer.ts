@@ -1,4 +1,4 @@
-import type { RendererPort } from "@mind-architect/core/src/application/ports/RendererPort";
+import type { RendererPort } from "../../core/RendererPort";
 
 export class FlatRenderer implements RendererPort {
   render(data: any, container: HTMLElement) {
