@@ -1,13 +1,13 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.2.0",
     "schema": "knowledge-graph-core"
   },
   "nodes": [
     {
       "id": "planet_001",
       "name": "Knowledge Planet",
-      "parent_id": null,
+      "parentId": null,
       "tags": ["vault", "entry"],
       "metadata": {}
     },
@@ -15,7 +15,7 @@
       "id": "mainland_software",
       "name": "軟體工程",
       "description": "技術與工程思維板塊",
-      "parent_id": "planet_001",
+      "parentId": "planet_001",
       "tags": ["area", "software"],
       "metadata": {}
     },
@@ -23,7 +23,7 @@
       "id": "mainland_life",
       "name": "人生生活",
       "description": "生活版塊",
-      "parent_id": "planet_001",
+      "parentId": "planet_001",
       "tags": ["area", "life"],
       "metadata": {}
     },
@@ -31,7 +31,7 @@
       "id": "building_design_patterns",
       "name": "GoF 設計模式",
       "description": "設計模式 MOC 展示建築",
-      "parent_id": "mainland_software",
+      "parentId": "mainland_software",
       "tags": ["MOC", "design-pattern"],
       "metadata": {}
     },
@@ -39,7 +39,7 @@
       "id": "building_system_design",
       "name": "系統設計",
       "description": "系統架構與工程實務 MOC 展示建築",
-      "parent_id": "mainland_software",
+      "parentId": "mainland_software",
       "tags": ["MOC", "architecture"],
       "metadata": {}
     },
@@ -47,7 +47,7 @@
       "id": "building_jung",
       "name": "榮格心理學",
       "description": "心理學相關 MOC 展示建築",
-      "parent_id": "mainland_life",
+      "parentId": "mainland_life",
       "tags": ["MOC", "psychology"],
       "metadata": {}
     },
@@ -55,7 +55,7 @@
       "id": "room_builder_pattern",
       "name": "建造者模式",
       "description": "",
-      "parent_id": "building_design_patterns",
+      "parentId": "building_design_patterns",
       "tags": ["pattern"],
       "metadata": {}
     },
@@ -63,7 +63,7 @@
       "id": "room_observer_pattern",
       "name": "觀察者模式",
       "description": "",
-      "parent_id": "building_design_patterns",
+      "parentId": "building_design_patterns",
       "tags": ["pattern"],
       "metadata": {}
     },
@@ -71,7 +71,7 @@
       "id": "room_hexagonal_arch",
       "name": "六角架構",
       "description": "",
-      "parent_id": "building_system_design",
+      "parentId": "building_system_design",
       "tags": ["architecture"],
       "metadata": {}
     }
