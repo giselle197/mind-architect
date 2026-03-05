@@ -2,6 +2,7 @@ import { renderers, type RendererPort } from "@mind-architect/renderer";
 import worldData from "@mind-architect/data/world.json";
 import { useEffect, useRef, useState } from "react";
 import { startApp } from "./bootstrap";
+import { ModeSwitcher } from "./components/ModeSwitcher";
 
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,26 +22,13 @@ function App() {
     };
   }, [rendererName]);
 
-  const rendererNames = Object.keys(renderers);
-
   return (
     <>
-      <select
+      <ModeSwitcher
+        modes={Object.keys(renderers)}
         value={rendererName}
-        onChange={(e) => setRendererName(e.target.value)}
-        style={{
-          position: "absolute",
-          top: 10,
-          left: 10,
-          zIndex: 10,
-        }}
-      >
-        {rendererNames.map((name) => (
-          <option key={name} value={name}>
-            {name}
-          </option>
-        ))}
-      </select>
+        onChange={setRendererName}
+      />
 
       <div
         ref={containerRef}
