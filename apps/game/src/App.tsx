@@ -4,10 +4,35 @@ import { useEffect, useRef, useState } from "react";
 import { startApp } from "./bootstrap";
 import { ModeSwitcher } from "./components/ModeSwitcher";
 
+function getInitialRenderer(rendererNames: string[]) {
+  const params = new URLSearchParams(location.search);
+  const queryRenderer = params.get("renderer");
+
+  if (queryRenderer && rendererNames.includes(queryRenderer)) {
+    return queryRenderer;
+  }
+
+  return rendererNames[0];
+}
+
+function setRendererQuery(name: string) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("renderer", name);
+  window.history.replaceState(null, "", url);
+}
+
+const rendererNames = Object.keys(renderers);
+
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [rendererName, setRendererName] = useState("dev");
+  const [rendererName, setRendererName] = useState(() =>
+    getInitialRenderer(rendererNames),
+  );
+
+  useEffect(() => {
+    setRendererQuery(rendererName);
+  }, [rendererName]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -17,15 +42,13 @@ function App() {
 
     startApp(containerRef.current, worldData, renderer);
 
-    return () => {
-      renderer.dispose?.();
-    };
+    return () => renderer.dispose?.();
   }, [rendererName]);
 
   return (
     <>
       <ModeSwitcher
-        modes={Object.keys(renderers)}
+        modes={rendererNames}
         value={rendererName}
         onChange={setRendererName}
       />
