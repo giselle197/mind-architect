@@ -1,7 +1,7 @@
-import type { NodeDTO } from "../core/Node";
+import type { Node } from "../core/Node";
 import type { TreeNode } from "./TreeNode";
 
-export function buildTree(nodes: NodeDTO[]): TreeNode {
+export function buildTree(nodes: Node[]): TreeNode {
   const map = new Map<string, TreeNode>();
   const roots: TreeNode[] = [];
 

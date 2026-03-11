@@ -1,5 +1,5 @@
-import type { NodeDTO } from "../core/Node";
+import type { Node } from "../core/Node";
 
-export type TreeNode = NodeDTO & {
+export type TreeNode = Node & {
   children: TreeNode[];
 };

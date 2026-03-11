@@ -1,4 +1,4 @@
-import type { NodeDTO } from "../../core/Node";
+import type { Node } from "../../core/Node";
 import type { RendererPort } from "../../core/RendererPort";
 
 import { buildTree } from "../../graph/buildTree";
@@ -8,7 +8,7 @@ import { layoutTree } from "../../layout/TreeLayout";
 export class DevTreeDiagramRenderer implements RendererPort {
   private svg?: SVGSVGElement;
 
-  render(world: { nodes: NodeDTO[] }, container: HTMLElement) {
+  render(world: { nodes: Node[] }, container: HTMLElement) {
     container.innerHTML = "";
 
     const tree = buildTree(world.nodes);
