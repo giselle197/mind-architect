@@ -7,6 +7,9 @@ export const nodeSchema = z.object({
   id: z.string(),
   name: z.string(),
   parentId: z.string().nullable(),
+  description: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  metadata: z.record(z.string(), z.unknown()).optional(),
 });
 
 export type Node = z.infer<typeof nodeSchema>;
