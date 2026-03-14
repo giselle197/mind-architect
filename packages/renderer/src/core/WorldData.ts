@@ -1,5 +1,5 @@
-import type { Node } from "./Node";
+import type { KnowledgeNode } from "./KnowledgeNode";
 
 export type WorldData = {
-  nodes: Node[];
+  nodes: KnowledgeNode[];
 };

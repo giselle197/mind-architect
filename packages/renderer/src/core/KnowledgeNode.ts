@@ -12,4 +12,4 @@ export const nodeSchema = z.object({
   metadata: z.record(z.string(), z.unknown()).optional(),
 });
 
-export type Node = z.infer<typeof nodeSchema>;
+export type KnowledgeNode = z.infer<typeof nodeSchema>;

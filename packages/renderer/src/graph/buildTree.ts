@@ -1,7 +1,7 @@
-import type { Node } from "../core/Node";
+import type { KnowledgeNode } from "../core/KnowledgeNode";
 import type { TreeNode } from "./TreeNode";
 
-export function buildTree(nodes: Node[]): TreeNode {
+export function buildTree(nodes: KnowledgeNode[]): TreeNode {
   const map = new Map<string, TreeNode>();
   const roots: TreeNode[] = [];
 

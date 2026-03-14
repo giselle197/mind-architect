@@ -1,5 +1,5 @@
-import type { Node } from "../core/Node";
+import type { KnowledgeNode } from "../core/KnowledgeNode";
 
-export type TreeNode = Node & {
+export type TreeNode = KnowledgeNode & {
   children: TreeNode[];
 };
