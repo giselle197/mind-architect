@@ -1,8 +1,9 @@
-import type { Node } from "../../core/Node";
+import type { WorldData } from "../../core/WorldData";
+
 import type { RendererPort } from "../../core/RendererPort";
 
 export class DevRenderer implements RendererPort {
-  render(data: { nodes: Node[] }, container: HTMLElement) {
+  render(data: WorldData, container: HTMLElement) {
     container.innerHTML = "";
 
     const root = document.createElement("div");

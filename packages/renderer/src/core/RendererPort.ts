@@ -1,7 +1,7 @@
-import type { Node } from "../core/Node";
+import type { WorldData } from "./WorldData";
 
 export interface RendererPort {
-  render(data: { nodes: Node[] }, container: HTMLElement): void;
+  render(data: WorldData, container: HTMLElement): void;
 
   dispose(): void;
 }
