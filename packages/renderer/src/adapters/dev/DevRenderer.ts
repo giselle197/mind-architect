@@ -1,7 +1,8 @@
+import type { Node } from "../../core/Node";
 import type { RendererPort } from "../../core/RendererPort";
 
 export class DevRenderer implements RendererPort {
-  render(data: any, container: HTMLElement) {
+  render(data: { nodes: Node[] }, container: HTMLElement) {
     container.innerHTML = "";
 
     const root = document.createElement("div");
@@ -13,5 +14,5 @@ export class DevRenderer implements RendererPort {
     container.appendChild(root);
   }
 
-  dispose() { }
+  dispose() {}
 }

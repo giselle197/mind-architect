@@ -1,8 +1,7 @@
+import type { Node } from "../core/Node";
+
 export interface RendererPort {
-  render(
-    data: Record<string, any>,
-    container: HTMLElement
-  ): void;
+  render(data: { nodes: Node[] }, container: HTMLElement): void;
 
   dispose(): void;
 }

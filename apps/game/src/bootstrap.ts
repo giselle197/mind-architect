@@ -1,8 +1,8 @@
-import type { RendererPort } from "@mind-architect/renderer";
+import type { Node, RendererPort } from "@mind-architect/renderer";
 
 export function startApp(
   container: HTMLElement,
-  data: Record<string, any>,
+  data: { nodes: Node[] },
   renderer: RendererPort,
 ) {
   renderer.render(data, container);
