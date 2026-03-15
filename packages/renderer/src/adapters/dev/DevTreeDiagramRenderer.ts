@@ -4,7 +4,7 @@ import type { RendererPort } from "../../core/RendererPort";
 
 import type { LayoutTreeNode } from "../../core/LayoutNode";
 import { buildTree } from "../../graph/buildTree";
-import { layoutTree } from "../../layout/TreeLayout";
+import { layoutTree } from "../../layout/layoutTree";
 
 export class DevTreeDiagramRenderer implements RendererPort {
   private svg?: SVGSVGElement;
