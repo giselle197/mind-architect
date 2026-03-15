@@ -1,31 +1,30 @@
-import type { KnowledgeNode } from "../core/KnowledgeNode";
-import type { TreeNode } from "./TreeNode";
+import type { KnowledgeNode, KnowledgeTreeNode } from "../core/KnowledgeNode";
 
-export function buildTree(nodes: KnowledgeNode[]): TreeNode {
-  const map = new Map<string, TreeNode>();
-  const roots: TreeNode[] = [];
+export function buildTree(nodes: KnowledgeNode[]): KnowledgeTreeNode {
+  const map = new Map<string, KnowledgeTreeNode>();
+  const roots: KnowledgeTreeNode[] = [];
 
-  // Build a lookup map from node id to TreeNode
+  // Build a lookup map from node id to KnowledgeNode
   for (const n of nodes) {
     if (map.has(n.id)) {
       throw new Error(`Duplicate node id: ${n.id}`);
     }
 
-    map.set(n.id, { ...n, children: [] });
+    map.set(n.id, { data: n, children: [] });
   }
 
   // Build parent-child relationships
   for (const node of map.values()) {
-    if (node.parentId === null) {
+    if (node.data.parentId === null) {
       roots.push(node);
       continue;
     }
 
-    const parent = map.get(node.parentId);
+    const parent = map.get(node.data.parentId);
 
     if (!parent) {
       throw new Error(
-        `Parent not found: node=${node.id}, parentId=${node.parentId}`,
+        `Parent not found: node=${node.data.id}, parentId=${node.data.parentId}`,
       );
     }
 

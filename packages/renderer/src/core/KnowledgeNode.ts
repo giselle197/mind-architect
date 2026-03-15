@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TreeNode } from "./TreeNode";
 
 /**
  * node come from data/world.json
@@ -13,3 +14,4 @@ export const nodeSchema = z.object({
 });
 
 export type KnowledgeNode = z.infer<typeof nodeSchema>;
+export type KnowledgeTreeNode = TreeNode<KnowledgeNode>;

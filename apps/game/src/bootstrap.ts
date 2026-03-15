@@ -1,8 +1,8 @@
-import type { Node, RendererPort } from "@mind-architect/renderer";
+import type { KnowledgeNode, RendererPort } from "@mind-architect/renderer";
 
 export function startApp(
   container: HTMLElement,
-  data: { nodes: Node[] },
+  data: { nodes: KnowledgeNode[] },
   renderer: RendererPort,
 ) {
   renderer.render(data, container);

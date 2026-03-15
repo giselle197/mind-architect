@@ -2,8 +2,8 @@ import { WorldData } from "../../core/WorldData";
 
 import type { RendererPort } from "../../core/RendererPort";
 
+import type { LayoutTreeNode } from "../../core/LayoutNode";
 import { buildTree } from "../../graph/buildTree";
-import type { LayoutNode } from "../../layout/LayoutNode";
 import { layoutTree } from "../../layout/TreeLayout";
 
 export class DevTreeDiagramRenderer implements RendererPort {
@@ -44,18 +44,18 @@ export class DevTreeDiagramRenderer implements RendererPort {
     return svg;
   }
 
-  private renderEdges(svg: SVGSVGElement, root: LayoutNode) {
-    const draw = (node: LayoutNode) => {
+  private renderEdges(svg: SVGSVGElement, root: LayoutTreeNode) {
+    const draw = (node: LayoutTreeNode) => {
       for (const child of node.children) {
         const line = document.createElementNS(
           "http://www.w3.org/2000/svg",
           "line",
         );
 
-        line.setAttribute("x1", String(node.x + 60));
-        line.setAttribute("y1", String(node.y + 40));
-        line.setAttribute("x2", String(child.x + 60));
-        line.setAttribute("y2", String(child.y));
+        line.setAttribute("x1", String(node.data.x + 60));
+        line.setAttribute("y1", String(node.data.y + 40));
+        line.setAttribute("x2", String(child.data.x + 60));
+        line.setAttribute("y2", String(child.data.y));
 
         line.setAttribute("stroke", "#444");
         line.setAttribute("stroke-width", "1.5");
@@ -69,11 +69,11 @@ export class DevTreeDiagramRenderer implements RendererPort {
     draw(root);
   }
 
-  private renderNodes(svg: SVGSVGElement, root: LayoutNode) {
+  private renderNodes(svg: SVGSVGElement, root: LayoutTreeNode) {
     const nodeWidth = 120;
     const nodeHeight = 40;
 
-    const draw = (node: LayoutNode) => {
+    const draw = (node: LayoutTreeNode) => {
       const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
 
       const rect = document.createElementNS(
@@ -81,8 +81,8 @@ export class DevTreeDiagramRenderer implements RendererPort {
         "rect",
       );
 
-      rect.setAttribute("x", String(node.x));
-      rect.setAttribute("y", String(node.y));
+      rect.setAttribute("x", String(node.data.x));
+      rect.setAttribute("y", String(node.data.y));
       rect.setAttribute("width", String(nodeWidth));
       rect.setAttribute("height", String(nodeHeight));
       rect.setAttribute("rx", "6");
@@ -94,13 +94,13 @@ export class DevTreeDiagramRenderer implements RendererPort {
         "text",
       );
 
-      text.setAttribute("x", String(node.x + nodeWidth / 2));
-      text.setAttribute("y", String(node.y + nodeHeight / 2 + 5));
+      text.setAttribute("x", String(node.data.x + nodeWidth / 2));
+      text.setAttribute("y", String(node.data.y + nodeHeight / 2 + 5));
       text.setAttribute("text-anchor", "middle");
       text.setAttribute("font-size", "12");
       text.setAttribute("fill", "#000");
 
-      text.textContent = node.name;
+      text.textContent = node.data.name;
 
       group.appendChild(rect);
       group.appendChild(text);

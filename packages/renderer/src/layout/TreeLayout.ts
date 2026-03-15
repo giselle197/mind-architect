@@ -1,59 +1,57 @@
-import type { TreeNode } from "../graph/TreeNode";
-import type { LayoutNode } from "./LayoutNode";
+import type { KnowledgeTreeNode } from "../core/KnowledgeNode";
+import type { LayoutTreeNode } from "../core/LayoutNode";
 
 export function layoutTree(
-  root: TreeNode,
+  root: KnowledgeTreeNode,
   options?: {
     horizontalSpacing?: number;
     verticalSpacing?: number;
   },
-): LayoutNode {
+): LayoutTreeNode {
   const horizontalSpacing = options?.horizontalSpacing ?? 180;
   const verticalSpacing = options?.verticalSpacing ?? 120;
 
   let leafIndex = 0;
   const visited = new Set<string>();
 
-  const dfs = (node: TreeNode, depth: number): LayoutNode => {
-    if (visited.has(node.id)) {
-      throw new Error(`Cycle detected at node ${node.id}`);
+  const dfs = (node: KnowledgeTreeNode, depth: number): LayoutTreeNode => {
+    if (visited.has(node.data.id)) {
+      throw new Error(`Cycle detected at node ${node.data.id}`);
     }
 
-    visited.add(node.id);
+    visited.add(node.data.id);
 
-    const layoutNode: LayoutNode = {
-      ...node,
-      x: 0,
-      y: depth * verticalSpacing,
+    const layoutTreeNode: LayoutTreeNode = {
+      data: { ...node.data, x: 0, y: depth * verticalSpacing },
       children: [],
     };
 
     // leaf
     if (node.children.length === 0) {
-      layoutNode.x = leafIndex * horizontalSpacing;
+      layoutTreeNode.data.x = leafIndex * horizontalSpacing;
       leafIndex++;
 
-      return layoutNode;
+      return layoutTreeNode;
     }
 
     // children layout
     const childLayouts = node.children.map((child) => dfs(child, depth + 1));
 
-    layoutNode.children = childLayouts;
+    layoutTreeNode.children = childLayouts;
 
     // compute parent x
     if (childLayouts.length === 1) {
-      layoutNode.x = childLayouts[0].x;
+      layoutTreeNode.data.x = childLayouts[0].data.x;
     } else {
       // parent placed at center of children
       const centerX =
-        childLayouts.reduce((sumX, child) => sumX + child.x, 0) /
+        childLayouts.reduce((sumX, child) => sumX + child.data.x, 0) /
         childLayouts.length;
 
-      layoutNode.x = centerX;
+      layoutTreeNode.data.x = centerX;
     }
 
-    return layoutNode;
+    return layoutTreeNode;
   };
 
   return dfs(root, 0);
