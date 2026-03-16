@@ -1,5 +1,5 @@
 import type { KnowledgeTreeNode } from "../core/KnowledgeNode";
-import type { LayoutTreeNode } from "../core/LayoutNode";
+import type { LayoutTreeNode } from "./LayoutNode";
 
 export function layoutTree(
   root: KnowledgeTreeNode,

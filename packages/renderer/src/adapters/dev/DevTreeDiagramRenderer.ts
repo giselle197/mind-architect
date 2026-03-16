@@ -2,8 +2,8 @@ import { WorldData } from "../../core/WorldData";
 
 import type { RendererPort } from "../../core/RendererPort";
 
-import type { LayoutTreeNode } from "../../core/LayoutNode";
 import { buildTree } from "../../graph/buildTree";
+import type { LayoutTreeNode } from "../../layout/LayoutNode";
 import { layoutTree } from "../../layout/layoutTree";
 
 export class DevTreeDiagramRenderer implements RendererPort {

@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { TreeNode } from "./TreeNode";
 
 /**
  * node come from data/world.json
@@ -14,4 +13,14 @@ export const nodeSchema = z.object({
 });
 
 export type KnowledgeNode = z.infer<typeof nodeSchema>;
+
+/**
+ * Generic Tree structure
+ * T = payload type
+ */
+export type TreeNode<T> = {
+  data: T;
+  children: TreeNode<T>[];
+};
+
 export type KnowledgeTreeNode = TreeNode<KnowledgeNode>;

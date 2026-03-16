@@ -1,5 +1,4 @@
-import type { TreeNode } from "./TreeNode";
-import type { KnowledgeNode } from "./KnowledgeNode";
+import type { KnowledgeNode, TreeNode } from "../core/KnowledgeNode";
 
 export type LayoutNode = KnowledgeNode & {
   x: number;
