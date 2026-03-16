@@ -1,58 +1,49 @@
-import { renderers, type RendererPort } from "@mind-architect/renderer";
 import worldData from "@mind-architect/data/world.json";
 import { useEffect, useRef, useState } from "react";
-import { startApp } from "./bootstrap";
 import { ModeSwitcher } from "./components/ModeSwitcher";
 
-function getInitialRenderer(rendererNames: string[]) {
-  const params = new URLSearchParams(location.search);
-  const queryRenderer = params.get("renderer");
+import { pipelines, pipelineNames } from "./bootstrap";
 
-  if (queryRenderer && rendererNames.includes(queryRenderer)) {
-    return queryRenderer;
-  }
-
-  return rendererNames[0];
+function getInitialPipeline(names: string[]): string {
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("pipeline");
+  return query && names.includes(query) ? query : names[0];
 }
 
-function setRendererQuery(name: string) {
+function setPipelineQuery(name: string) {
   const url = new URL(window.location.href);
-  url.searchParams.set("renderer", name);
-  window.history.replaceState(null, "", url);
+  url.searchParams.set("pipeline", name);
+  window.history.replaceState({}, "", url.toString());
 }
-
-const rendererNames = Object.keys(renderers);
 
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const [rendererName, setRendererName] = useState(() =>
-    getInitialRenderer(rendererNames),
+  const [pipelineName, setPipelineName] = useState(() =>
+    getInitialPipeline(pipelineNames),
   );
 
   useEffect(() => {
-    setRendererQuery(rendererName);
-  }, [rendererName]);
+    setPipelineQuery(pipelineName);
+  }, [pipelineName]);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const Renderer = renderers[rendererName];
-    const renderer: RendererPort = new Renderer();
+    const createPipeline = pipelines[pipelineName];
+    const pipeline = createPipeline();
 
-    startApp(containerRef.current, worldData, renderer);
+    pipeline.run(containerRef.current, worldData);
 
-    return () => renderer.dispose?.();
-  }, [rendererName]);
+    return () => pipeline.dispose?.();
+  }, [pipelineName]);
 
   return (
-    <>
+    <div className="app">
       <ModeSwitcher
-        modes={rendererNames}
-        value={rendererName}
-        onChange={setRendererName}
+        modes={pipelineNames}
+        value={pipelineName}
+        onChange={setPipelineName}
       />
-
       <div
         ref={containerRef}
         style={{
@@ -60,7 +51,7 @@ function App() {
           height: "100vh",
         }}
       />
-    </>
+    </div>
   );
 }
 

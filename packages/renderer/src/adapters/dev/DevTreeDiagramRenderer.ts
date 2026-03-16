@@ -1,27 +1,17 @@
-import { WorldData } from "../../core/WorldData";
-
 import type { RendererPort } from "../../core/RendererPort";
-
-import { buildTree } from "../../graph/buildTree";
 import type { LayoutTreeNode } from "../../layout/LayoutNode";
-import { layoutTree } from "../../layout/layoutTree";
 
 export class DevTreeDiagramRenderer implements RendererPort {
   private svg?: SVGSVGElement;
 
-  render(data: WorldData, container: HTMLElement) {
+  render(root: LayoutTreeNode, container: HTMLElement) {
     container.innerHTML = "";
-
-    const tree = buildTree(data.nodes);
-    if (!tree) return;
-
-    const layoutRoot = layoutTree(tree);
 
     const svg = this.createSvg();
     this.svg = svg;
 
-    this.renderEdges(svg, layoutRoot);
-    this.renderNodes(svg, layoutRoot);
+    this.renderEdges(svg, root);
+    this.renderNodes(svg, root);
 
     container.appendChild(svg);
   }

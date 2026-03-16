@@ -1,13 +1,8 @@
-import { DevRenderer } from "./src/adapters/dev/DevRenderer";
 import { DevTreeDiagramRenderer } from "./src/adapters/dev/DevTreeDiagramRenderer";
 import type { KnowledgeNode } from "./src/core/KnowledgeNode";
 import type { RendererPort } from "./src/core/RendererPort";
+import type { WorldData } from "./src/core/WorldData";
 
-export const renderers: Record<string, new () => RendererPort> = {
-  dev: DevRenderer,
-  tree: DevTreeDiagramRenderer,
-};
-
-export { DevRenderer, DevTreeDiagramRenderer };
-export type { KnowledgeNode, RendererPort };
+export { DevTreeDiagramRenderer };
+export type { KnowledgeNode, RendererPort, WorldData };
 

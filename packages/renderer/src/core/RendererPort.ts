@@ -1,7 +1,7 @@
-import type { WorldData } from "./WorldData";
+import type { LayoutTreeNode } from "../layout/LayoutNode";
 
 export interface RendererPort {
-  render(data: WorldData, container: HTMLElement): void;
+  render(root: LayoutTreeNode, container: HTMLElement): void;
 
   dispose(): void;
 }
