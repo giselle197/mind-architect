@@ -1,22 +1,26 @@
-import type { RendererPort, WorldData } from "@mind-architect/renderer";
-import { buildTree } from "@mind-architect/renderer/src/graph/buildTree";
-import { layoutTree } from "@mind-architect/renderer/src/layout/layoutTree";
-
+import type {
+  RendererPort,
+  WorldData,
+  LayoutEngine,
+} from "@mind-architect/renderer";
+import { buildTree } from "@mind-architect/renderer";
 export interface AppPipeline {
   run(container: HTMLElement, data: WorldData): void;
   dispose?(): void;
 }
 
 export class StandardPipeline implements AppPipeline {
+  private layoutEngine: LayoutEngine;
   private renderer: RendererPort;
-  constructor(renderer: RendererPort) {
+  constructor(layoutEngine: LayoutEngine, renderer: RendererPort) {
+    this.layoutEngine = layoutEngine;
     this.renderer = renderer;
   }
 
   run(container: HTMLElement, data: WorldData) {
     const tree = buildTree(data.nodes);
     if (!tree) return;
-    const layoutRoot = layoutTree(tree);
+    const layoutRoot = this.layoutEngine.layout(tree);
     this.renderer.render(layoutRoot, container);
   }
 
