@@ -1,4 +1,4 @@
-import type { RendererPort } from "../../core";
+import type { RendererPort } from "../../../core";
 import type { LayoutTreeNode } from "../transformers/models/LayoutNode";
 
 export class FlatRenderer implements RendererPort<LayoutTreeNode> {
