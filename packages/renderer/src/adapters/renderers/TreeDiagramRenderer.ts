@@ -1,7 +1,7 @@
-import type { RendererPort } from "../../core/RendererPort";
-import type { LayoutTreeNode } from "../../layout/LayoutNode";
+import type { RendererPort } from "../../core";
+import type { LayoutTreeNode } from "../transformers/models/LayoutNode";
 
-export class DevTreeDiagramRenderer implements RendererPort {
+export class TreeDiagramRenderer implements RendererPort<LayoutTreeNode> {
   private svg?: SVGSVGElement;
 
   render(root: LayoutTreeNode, container: HTMLElement) {

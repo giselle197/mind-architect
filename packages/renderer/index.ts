@@ -1,11 +1,36 @@
-import { DevTreeDiagramRenderer } from "./src/adapters/dev/DevTreeDiagramRenderer";
-import { FlatRenderer } from "./src/adapters/flat/FlatRenderer";
-import type { KnowledgeNode } from "./src/core/KnowledgeNode";
-import type { RendererPort } from "./src/core/RendererPort";
-import type { WorldData } from "./src/core/WorldData";
-import { buildTree } from "./src/graph/buildTree";
-import { FlatLayoutEngine, type LayoutEngine } from "./src/layout/LayoutEngine";
+import { FlatRenderer } from "./src/adapters/renderers/FlatRenderer";
+import { JsonRenderer } from "./src/adapters/renderers/JsonRenderer";
+import { TreeDiagramRenderer } from "./src/adapters/renderers/TreeDiagramRenderer";
+import { buildTree } from "./src/adapters/transformers/algorithms/buildTree";
+import { IdentityTransformer } from "./src/adapters/transformers/IdentityTransformer";
+import { type LayoutTreeNode } from "./src/adapters/transformers/models/LayoutNode";
+import {
+  LayoutTreeTransformer,
+  LogicalTreeTransformer,
+} from "./src/adapters/transformers/treeTransformers";
+import type {
+  KnowledgeNode,
+  RendererPort,
+  TransformerPort,
+  WorldData,
+} from "./src/core";
+import { ViewPipeline } from "./src/core";
 
-export { buildTree, DevTreeDiagramRenderer, FlatLayoutEngine, FlatRenderer };
-export type { KnowledgeNode, LayoutEngine, RendererPort, WorldData };
+export {
+  buildTree,
+  FlatRenderer,
+  IdentityTransformer,
+  JsonRenderer,
+  LayoutTreeTransformer,
+  LogicalTreeTransformer,
+  TreeDiagramRenderer,
+  ViewPipeline
+};
+export type {
+  KnowledgeNode,
+  LayoutTreeNode,
+  RendererPort,
+  TransformerPort,
+  WorldData
+};
 

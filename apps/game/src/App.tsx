@@ -2,7 +2,7 @@ import worldData from "@mind-architect/data/world.json";
 import { useEffect, useRef, useState } from "react";
 import { ModeSwitcher } from "./components/ModeSwitcher";
 
-import { pipelines, pipelineNames } from "./bootstrap";
+import { pipelineNames, viewPipelineRegistry } from "./viewPipelineRegistry";
 
 function getInitialPipeline(names: string[]): string {
   const params = new URLSearchParams(window.location.search);
@@ -29,10 +29,10 @@ function App() {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const createPipeline = pipelines[pipelineName];
+    const createPipeline = viewPipelineRegistry[pipelineName];
     const pipeline = createPipeline();
 
-    pipeline.run(containerRef.current, worldData);
+    pipeline.execute(containerRef.current, worldData);
 
     return () => pipeline.dispose?.();
   }, [pipelineName]);
