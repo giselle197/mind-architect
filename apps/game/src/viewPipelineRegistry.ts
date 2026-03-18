@@ -6,7 +6,7 @@ import {
   LogicalTreeTransformer,
   LayoutTreeTransformer,
   ViewPipeline,
-} from "@mind-architect/renderer";
+} from "@mind-architect/viewer";
 
 export const viewPipelineRegistry: Record<
   string,

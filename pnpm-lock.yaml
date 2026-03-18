@@ -60,13 +60,13 @@ importers:
       '@mind-architect/data':
         specifier: workspace:*
         version: link:../../data
-      '@mind-architect/renderer':
+      '@mind-architect/viewer':
         specifier: workspace:*
-        version: link:../../packages/renderer
+        version: link:../../packages/viewer
 
   data: {}
 
-  packages/renderer:
+  packages/viewer:
     dependencies:
       zod:
         specifier: ^4.3.6
