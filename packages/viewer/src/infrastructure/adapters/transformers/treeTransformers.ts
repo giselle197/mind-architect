@@ -1,4 +1,4 @@
-import type { KnowledgeTreeNode, TransformerPort, WorldData } from "../../../core";
+import type { KnowledgeTreeNode, TransformerPort, WorldData } from "#core";
 import { buildTree } from "./algorithms/buildTree";
 import { layoutTree } from "./algorithms/layoutTree";
 import type { LayoutTreeNode } from "./models/LayoutNode";

@@ -2,13 +2,13 @@ import {
   JsonRenderer,
   TreeDiagramRenderer,
   FlatRenderer,
-} from "../../adapters/renderers";
+} from "#infrastructure/adapters/renderers";
 import {
   IdentityTransformer,
   LogicalTreeTransformer,
   LayoutTreeTransformer,
-} from "../../adapters/transformers";
-import { ViewPipeline } from "../../../core";
+} from "#infrastructure/adapters/transformers";
+import { ViewPipeline } from "#core";
 
 export const viewPipelinePresets: Record<
   string,

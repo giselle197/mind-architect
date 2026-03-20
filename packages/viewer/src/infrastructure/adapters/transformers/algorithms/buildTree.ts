@@ -1,4 +1,4 @@
-import type { KnowledgeNode, KnowledgeTreeNode } from "../../../../core";
+import type { KnowledgeNode, KnowledgeTreeNode } from "#core";
 
 export function buildTree(nodes: KnowledgeNode[]): KnowledgeTreeNode {
   const map = new Map<string, KnowledgeTreeNode>();
