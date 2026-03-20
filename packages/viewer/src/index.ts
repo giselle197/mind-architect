@@ -15,6 +15,7 @@ import {
   LayoutTreeTransformer,
   LogicalTreeTransformer,
 } from "./infrastructure/adapters/transformers/treeTransformers";
+import { viewPipelinePresets } from "./infrastructure/di/presets/ViewPipelines";
 
 export {
   buildTree,
@@ -25,6 +26,7 @@ export {
   LogicalTreeTransformer,
   TreeDiagramRenderer,
   ViewPipeline,
+  viewPipelinePresets,
 };
 export type {
   KnowledgeNode,
