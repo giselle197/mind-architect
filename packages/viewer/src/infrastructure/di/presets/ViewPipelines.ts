@@ -21,6 +21,6 @@ export const viewPipelinePresets: Record<
     new ViewPipeline(new LayoutTreeTransformer(), new JsonRenderer()),
   tree: () =>
     new ViewPipeline(new LayoutTreeTransformer(), new TreeDiagramRenderer()),
-  flat: () => new ViewPipeline(new LayoutTreeTransformer(), new FlatRenderer()),
+  flat: () => new ViewPipeline(new LogicalTreeTransformer(), new FlatRenderer()),
 };
 
